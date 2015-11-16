@@ -1,0 +1,47 @@
+[{
+	"Id": "jctest12345678910tasklist1",
+	"TaskDescription": "Establish contact with supervisors",
+	"CardId": "0000000001",
+	"Assignee": "Richard Guo",
+	"Assigner": "Jeff Chua",
+	"Done": "X"
+}, {
+	"Id": "jctest12345678910tasklist2",
+	"TaskDescription": "Gather settlement information based on order",
+	"CardId": "0000000001",
+	"Assignee": "Richard Guo",
+	"Assigner": "Jeff Chua"
+}, {
+	"Id": "jctest12345678910tasklist6",
+	"TaskDescription": "Run report XYZ",
+	"CardId": "0000000001",
+	"Assignee": "Michelle T.",
+	"Assigner": "Jeff Chua"
+},  {
+	"Id": "jctest12345678910tasklist7",
+	"TaskDescription": "Reconciliation",
+	"CardId": "0000000001",
+	"Assignee": "Michelle T.",
+	"Assigner": "Jeff Chua"
+},{
+	"Id": "jctest12345678910tasklist3",
+	"TaskDescription": "Determine who were working on the project",
+	"CardId": "0000000003",
+	"Assignee": "Richard Guo",
+	"Assigner": "Jeff Chua",
+	"Done": "X"
+}, {
+	"Id": "jctest12345678910tasklist4",
+	"TaskDescription": "Ask about total work hours",
+	"CardId": "0000000003",
+	"Assignee": "Richard Guo",
+	"Assigner": "Jeff Chua",
+	"Done": "X"
+}, {
+	"Id": "jctest12345678910tasklist5",
+	"TaskDescription": "Maintain work order to complete automated calculation",
+	"CardId": "0000000003",
+	"Assignee": "Michelle T.",
+	"Assigner": "Jeff Chua",
+	"Done": "X"
+}]

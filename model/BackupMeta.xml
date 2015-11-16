@@ -1,0 +1,58 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="p819565trial.jchana.sharedworkplace.services.cards" xml:lang="en" sap:schema-version="0000">
+            <EntityType Name="CardType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id" />
+                </Key>
+                <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="32" sap:label="Card Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Title" Type="Edm.String" MaxLength="120" Nullable="false" sap:label="Title" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ActionType" Type="Edm.String" MaxLength="60" sap:label="Action Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="255" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CreatedOn" Type="Edm.DateTime" Precision="0" sap:label="Created On" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CreatedBy" Type="Edm.String" MaxLength="256" sap:label="Created By" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ChangedOn" Type="Edm.DateTime" Precision="0" sap:label="Changed On" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ChangedBy" Type="Edm.String" MaxLength="256" sap:label="Changed By" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="60" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Duedate" Type="Edm.DateTime" Precision="0" sap:label="Due Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Priority" Type="Edm.Decimal" Precision="1" Scale="0" sap:label="Priority" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Comment" Type="Edm.String" sap:label="Comment" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Attachments" Relationship="p819565trial.jchana.sharedworkplace.services.cards.Card_Attachments" FromRole="FromRole_Card_Attachments" ToRole="ToRole_Card_Attachments"/>
+            </EntityType>
+            <EntityType Name="AttachmentType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Content" Type="Edm.Binary" Nullable="false" sap:label="Content" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="32" sap:label="Attachment ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ContentType" Type="Edm.String" Nullable="false" MaxLength="256" sap:label="Content Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CardId" Type="Edm.String" Nullable="false" MaxLength="32" sap:label="Card ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Filename" Type="Edm.String" Nullable="false" MaxLength="1024" sap:label="Filename" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="Card_Attachments" sap:content-version="1">
+                <End Type="p819565trial.jchana.sharedworkplace.services.cards.CardType" Multiplicity="1" Role="FromRole_Card_Attachments"/>
+                <End Type="p819565trial.jchana.sharedworkplace.services.cards.AttachmentType" Multiplicity="*" Role="ToRole_Card_Attachments"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Card_Attachments">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Card_Attachments">
+                        <PropertyRef Name="CardId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="p819565trial.jchana.sharedworkplace.services.cards_Entities" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="AttachmentSet" EntityType="p819565trial.jchana.sharedworkplace.services.cards.AttachmentType" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="CardSet" EntityType="p819565trial.jchana.sharedworkplace.services.cards.CardType" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="Card_Attachments_AssocSet" Association="p819565trial.jchana.sharedworkplace.services.cards.Card_Attachments" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="CardSet" Role="FromRole_Card_Attachments"/>
+                    <End EntitySet="AttachmentSet" Role="ToRole_Card_Attachments"/>
+                </AssociationSet>
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

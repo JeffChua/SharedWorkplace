@@ -1,0 +1,66 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="SharedWorkplaceDemo.view.Detail">
+	<Page class="sapUiFioriObjectPage" navButtonPress="onNavBack" showNavButton="{device&gt;/isPhone}" title="{i18n&gt;detailTitle}">
+		<content>
+			<ObjectHeader number="{Priority}" numberUnit="{ActionType}" title="{Title}">
+				<statuses id="statuses">
+					<ObjectStatus id="oStatusId" state="{ path: 'Status', formatter: 'SharedWorkplaceDemo.util.Formatter.convertStatusState' }" text="{Status}"/>
+				</statuses>
+				<ObjectAttribute text="{CreatedBy}"/>
+				<ObjectAttribute text="CreatedOn: { path: 'CreatedOn', formatter: 'SharedWorkplaceDemo.util.Formatter.convertDateTime' }"/>
+				<ObjectAttribute text="{Description}"/>
+			</ObjectHeader>
+			<l:VerticalLayout defaultSpan="L12 M12 S12" id="detailFragment" width="96%">
+				<l:content>
+					<f:SimpleForm class="center" columnsL="2" columnsM="2" editable="true" emptySpanL="0" emptySpanM="0" labelSpanL="4" labelSpanM="4" layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024">
+						<f:content>
+							<Label text="Priority" width="100%" id=""/>
+							<RatingIndicator id="numericAttributeInputField" visualMode="Half" value="{Priority}"/>
+							<Label text="Status" width="100%" id="statusLabel"/>
+							<ActionSelect selectedKey="{Status}" id="StatusSelect" width="100%">
+							    <items>
+							        <core:ListItem text="New" key="New"/>
+							        <core:ListItem text="Updated" key="Updated"/>
+							        <core:ListItem text="Completed" key="Completed"/>
+							        <core:ListItem text="Canceled" key="Canceled"/>	
+						        </items>
+							</ActionSelect>
+							<Label text="Duedate"/>
+							<Text id="dateAttributeText" visible="false">
+								<customData>
+									<core:CustomData key="sapDtResourcePath" value="CardSet"/>
+								</customData>
+							</Text>
+							<DateTimeInput dateValue="{Duedate}" id="dateAttributeInputField" type="DateTime" width="100%"/>
+							
+							<Label text="Comment"/>
+							<Text id="textAttributeText" text="{Comment}" visible="false"/>
+							<TextArea wrapping="None" id="textAttributeInputField" placeholder="Enter Comment" value="{Comment}" width="100%" rows="3"/>
+						</f:content>
+					</f:SimpleForm>
+				</l:content>
+			</l:VerticalLayout>
+			<Button class="firstToRight" icon="sap-icon://add" press="handleAddPhoto" type="Transparent"/>
+			<Button class="secondToRight" enabled="false" icon="sap-icon://less" id="removePhotoButton" press="handleRemovePhoto" type="Transparent"/>
+			<l:VerticalLayout defaultSpan="L12 M12 S12" id="detailFragment2" width="96%">
+				<l:content>
+					<Label class="right" text="Images"/>
+					<Label text=""/>
+					<f:SimpleForm class="center" columnsL="2" columnsM="2" editable="true" emptySpanL="0" emptySpanM="0" labelSpanL="4" labelSpanM="4" layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024">
+						<f:content>
+							<Carousel id="attachmentsCarousel" loop="true">
+								<pages/>
+							</Carousel>
+						</f:content>
+					</f:SimpleForm>
+				</l:content>
+			</l:VerticalLayout>
+		</content>
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button text="Tasks" press="onOpenTaskList" id="task" icon="sap-icon://task"/>
+				<Button id="save" press="onSaveSelect" text="Save" icon="sap-icon://save"/>
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

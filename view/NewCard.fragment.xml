@@ -1,0 +1,35 @@
+<core:FragmentDefinition xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+	<Dialog id="NewCardDialog" afterOpen="onAfterNewCardOpen" class="sapUiPopupWithPadding" contentWidth="auto" title="New Card">
+		<content>
+			<f:SimpleForm id="NewCardForm" layout="ResponsiveGridLayout">
+				<f:content>
+					<core:Title id="__title1" text="Card Info"/>
+					<Label text="Title"/>
+					<Input id="TitleValue" width="100%" placeholder="(Mandatory)"/>
+					<Label text="Action Type"/>
+					<Input id="ActionTypeValue" width="100%"/>
+					<Label text="Priority"/>
+					<RatingIndicator id="PriorityValue" visualMode="Half"/>
+					<Label text="Status"/>
+					<Select selectedItem="Element sap.ui.core.ListItem#__item1" id="StatusValue">
+					    <items>
+					        <core:ListItem text="New" key="New"/>
+					        <core:ListItem text="Updated" key="Updated"/>
+					        <core:ListItem text="Completed" key="Completed"/>
+					    </items>
+					</Select>
+					<Label text="Due Date"/>
+					<DateTimeInput id="DueDateValue" type="DateTime" width="100%" value="Now"/>
+					<Label text="Description"/>
+					<TextArea wrapping="None" id="DescriptionValue"/>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+		<beginButton>
+			<Button app:dialogType="NewCard" id="createButton" press="onCreatePress" text="Create"/>
+		</beginButton>
+		<endButton>
+			<Button app:dialogType="NewCard" press="onCancelPress" text="Cancel"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

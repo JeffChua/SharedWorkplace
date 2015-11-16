@@ -1,0 +1,8 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<ActionSheet placement="Bottom" showCancelButton="true" title="Choose Your Action">
+		<buttons>
+			<Button press="handleTakeAPicture" text="Take a Photo"/>
+			<Button press="handleChooseFromGallery" text="Choose from Gallery"/>
+		</buttons>
+	</ActionSheet>
+</core:FragmentDefinition>

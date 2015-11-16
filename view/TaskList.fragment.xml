@@ -1,0 +1,47 @@
+<core:FragmentDefinition xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:su="sap.suite.ui.commons" xmlns="sap.m">
+	<Popover contentHeight="60%" contentWidth="55%" placement="Top" showHeader="false">
+		<NavContainer id="navCon">
+			<Page id="master" title="Task List">
+				<subHeader>
+					<Bar class="sapUiContentPadding">
+						<contentMiddle >
+							<ProgressIndicator 
+							id="taskProgress"
+	                        percentValue="0"
+	                        displayValue="0%"
+	                        showValue="true"
+	                        state="None" />
+	                    </contentMiddle>
+                    </Bar>
+				</subHeader>
+				<List id="taskList" items="{path:'Tasks'}">
+					<StandardListItem description="{Assignee}" icon="{ path: 'Done', formatter: 'SharedWorkplaceDemo.util.Formatter.convertTaskIcon' }"
+						iconDensityAware="false" iconInset="false" press="onNavToTask" title="{TaskDescription}" type="Active"/>
+				</List>
+				<footer>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<Button id="AddTaskButton" press="onAddTask" activeIcon="sap-icon://add" icon="sap-icon://add"/>
+					</Toolbar>						
+				</footer>
+			</Page>
+			<Page id="detail" navButtonPress="onNavBackTasks" showNavButton="true" title="Task">
+				<ObjectHeader title="{TaskDescription}">
+					<attributes>
+						<ObjectAttribute text="Assignee : {Assignee}"/>
+						<ObjectAttribute text="Assigner : {Assigner}"/>
+					</attributes>
+				</ObjectHeader>
+				<footer>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<ToggleButton icon="sap-icon://message-success" id="completeTask" press="onCompleteTask"
+							pressed="{ path: 'Done', formatter: 'SharedWorkplaceDemo.util.Formatter.setToggleComplete'}" tooltip="Completed"/>
+						<Button icon="sap-icon://delete" id="deleteTask" press="onDeleteTask"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</NavContainer>
+	</Popover>
+</core:FragmentDefinition>

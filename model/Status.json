@@ -1,0 +1,19 @@
+{
+  "Status": [
+	{
+	  "Key": "New",
+      "Text": "New",
+      "Sequence": 1
+	},
+	{
+	  "Key": "Completed",
+      "Text": "Completed",
+      "Sequence": 3
+	},
+	{
+	  "Key": "Updated",
+      "Text": "Updated",
+      "Sequence": 2
+	}
+  ]
+}
